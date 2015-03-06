@@ -16,8 +16,18 @@ angular.module('myApp.login', ['ngRoute', 'service'])
             var loginData = {'name' : vm.name, 'password': vm.password};
             console.log(loginData);
 
-            loginService.getLogin(loginData).success(function (JWT){
+            loginService.getLogin(loginData)
+                .success(function (JWT){
                 console.log(JWT);
-            })};
+            })
+                .error(function(loginData){
+
+                   vm.error= loginData.error;
+
+                    console.log(vm);
+                    console.log(loginData.error)
+                })
+
+        };
 }]);
 

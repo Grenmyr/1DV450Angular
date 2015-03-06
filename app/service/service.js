@@ -23,7 +23,6 @@ angular.module('service', [])
                     Authorization: 'Token token=123',
                     password:loginData.password,
                     name: loginData.name
-
                 }
             };
             return $http(request);

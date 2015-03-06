@@ -1,20 +1,19 @@
 <p>This is my login view</p>
-<div class="col-md-4" data-ng-controller="loginctrl as user">
+<div class="col-md-4" data-ng-controller="loginctrl as auth">
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">Log in</h3>
         </div>
         <div class="panel-body">
-            <form novalidate name="user.form" class="simple-form">
+            <form novalidate name="auth.form" class="simple-form">
                 name: <br />
-                <input type="text" ng-model="user.name"/><br />
+                <input type="text" ng-model="auth.name"/><br />
                 Password: <br />
-                <input type="password" ng-model="user.password"/>
-                <button data-ng-click="user.login()">Log in</button>
+                <input type="password" ng-model="auth.password"/>
+                <button data-ng-click="auth.login()">Log in</button>
             </form>
-
-            <h4>En lyckad inloggning ger dig en token du kan använda när du gör operationer som kräver inloggning</h4>
-            <p>Token: {{$root.token}}</p>
+            <h4>You need to login to post and edit</h4>
+            <div class="alert alert-danger"> {{auth.error}}</div>
         </div>
     </div>
 </div>
