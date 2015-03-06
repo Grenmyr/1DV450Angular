@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('services', [])
-    .service('allTypes', ['$http' ,function ($http) {
+angular.module('service', [])
+    .service('types', ['$http' ,function ($http) {
         this.getAllTypes = function () {
             var request = {
                 url: 'http://localhost:3000/api/v1/types',
@@ -9,6 +9,21 @@ angular.module('services', [])
                 headers: {
                     Accept: 'application/json',
                     Authorization: 'Token token=123'
+                }
+            };
+            return $http(request);
+        }
+    }]).service('login', ['$http' ,function ($http) {
+        this.getLogin = function (loginData) {
+            var request = {
+                url: 'http://localhost:3000/api/login',
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    Authorization: 'Token token=123',
+                    password:loginData.password,
+                    name: loginData.name
+
                 }
             };
             return $http(request);

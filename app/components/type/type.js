@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.type', ['ngRoute', 'services'])
+angular.module('myApp.type', ['ngRoute', 'service'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/type', {
@@ -9,7 +9,7 @@ angular.module('myApp.type', ['ngRoute', 'services'])
   });
 }])
 
-.controller('typectrl', ['allTypes', function(allTypesService) {
+.controller('typectrl', ['types', function(allTypesService) {
         console.log(allTypesService);
         allTypesService.getAllTypes().success(function (data){
             console.log(data);

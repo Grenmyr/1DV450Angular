@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.login', ['ngRoute'])
+angular.module('myApp.login', ['ngRoute', 'service'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/login', {
@@ -9,7 +9,15 @@ angular.module('myApp.login', ['ngRoute'])
   });
 }])
 
-.controller('loginctrl', [function() {
-console.log('logincontroller')
+.controller('loginctrl', ['login', function(loginService) {
+        var vm = this;
+
+        vm.login = function() {
+            var loginData = {'name' : vm.name, 'password': vm.password};
+            console.log(loginData);
+
+            loginService.getLogin(loginData).success(function (JWT){
+                console.log(JWT);
+            })};
 }]);
 
