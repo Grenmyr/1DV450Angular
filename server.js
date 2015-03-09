@@ -20,7 +20,7 @@ app.use(express.static(__dirname + '/service')); // Set app folder public
 // routes ==================================================
 //require('./app/routes')(app); // pass our application into our routes
 app.get('*', function(req, res) {
-    res.sendFile(__dirname +'/app/index.html');
+    res.sendFile(__dirname +'/app/');
 });
 // start app ===============================================
 app.listen(port);

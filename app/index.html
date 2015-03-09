@@ -16,9 +16,13 @@
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="/login">login</a></li>
-    <li><a href="/type">type</a></li>
+    <div ng-controller="loginctrl as loginScope" >
+  <ul  class="menu">
+        <li ng-if="loginScope.loginService.authorized"><a class="btn btn-info" href="/type">type</a></li>
+        <li ng-if="loginScope.loginService.authorized" ng-click="loginScope.logout()"  ><a class="btn btn-danger" href="/logout" >logout</a></li>
+
+        <li ng-if="!loginScope.loginService.authorized"><a class="btn btn-primary"  href="/login">login</a></li>
+
   </ul>
 
   <!--[if lt IE 7]>
@@ -26,13 +30,11 @@
   <![endif]-->
 
   <div ng-view></div>
-
+  <p class="alert alert-success" data-ng-show="loginScope.loginService.authorized">You are logged in and can create and update</p>
+  <p class="alert alert-danger" data-ng-show="!loginScope.loginService.authorized">Log in to create or update</p>
   <div>Angular seed app: v<span app-version></span></div>
-  <div>
-      <form>
 
-      </form>
-  </div>
+    </div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -41,7 +43,6 @@
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src=bower_components/requirejs/require.js></script>
-
 
 
   <script src="components/login/login.js"></script>

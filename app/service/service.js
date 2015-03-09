@@ -14,6 +14,9 @@ angular.module('service', [])
             return $http(request);
         }
     }]).service('login', ['$http' ,function ($http) {
+        var vm = this;
+        this.authorized = false;
+
         this.getLogin = function (loginData) {
             var request = {
                 url: 'http://localhost:3000/api/login',
@@ -25,6 +28,10 @@ angular.module('service', [])
                     name: loginData.name
                 }
             };
-            return $http(request);
+            return $http(request)
+                .success(function(){
+                    vm.authorized = true;
+
+                });
         }
     }]);
