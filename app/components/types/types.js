@@ -15,9 +15,9 @@ angular.module('myApp.types', ['ngRoute', 'service'])
         vm.typesArray = null;
 
         vm.allTypes = allTypesService.getAllTypes().success(function (data){
-            console.log(data);
+            //console.log(data);
             vm.typesArray = data;
-            console.log(vm.typesArray)
+            //console.log(vm.typesArray)
             });
 
 }]);
