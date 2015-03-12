@@ -6,8 +6,12 @@
                 <p>Taste: {{eventCtrl.event.taste}}</p>
                 <p class="text-success" data-ng-if="eventCtrl.event.edible">Edible  </p>
                 <p class="text-warning" data-ng-if="!eventCtrl.event.edible">Poisonous </p>
+                <select ng-model="amountSelect">
+                    <option value="" selected="selected">Filter by richness</option>
+                    <option value="{{amount}}" ng-repeat="amount in eventCtrl.amounts">Richness {{amount}}</option>
+                </select>
+
             </div>
-            <!--center="[{{eventCtrl.position.latitude}},{{eventCtrl.position.longitude}}]"-->
             <div class="col-md-10">
                 <map zoom="20"
                      center="current-location"
@@ -17,12 +21,11 @@
                      keyboard-shortcuts="false"
                      tilt="45"
                      map-type-id="TERRAIN">
-
-                    <marker ng-repeat="position in eventCtrl.positions"
+                    <marker ng-repeat="position in eventCtrl.positions | filter: { amount: amountSelect }"
                             position="[{{position.lat}},{{position.lng}}]"
-                            title="Hello Marker"
+                            title="{{eventCtrl.event.name}} Richness  {{position.amount}}"
                             animation="Animation.BOUNCE"
-                            draggable="true"
+                            draggable="false"
                             visible="true">
                     </marker>
                 </map>

@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('myApp.event', ['ngRoute','ngMap', 'service'])
+angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
 
-    .config(['$routeProvider', function($routeProvider) {
+    .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when(
             '/event/:id', {
                 templateUrl: '/components/event/event.html',
@@ -10,36 +10,26 @@ angular.module('myApp.event', ['ngRoute','ngMap', 'service'])
                 controllerAs: 'eventCtrl'
             })
     }])
-.controller('eventCtrl', ['event','positions','$routeParams','$scope',function(event,positions,$routeParams,$scope){
-    var vm= this;
-    console.log($routeParams.id);
+    .controller('eventCtrl', ['event', '$routeParams', function (event, $routeParams) {
+        var vm = this;
+        vm.positions = [];
+        vm.amounts = [];
+        console.log($routeParams.id);
 
-        /*if (navigator.geolocation) {
-            console.log("Support");
-         navigator.geolocation.getCurrentPosition(function(position){
-                vm.position = position.coords;
-                console.log(vm.position);
+        event.getEventById($routeParams.id).success(function (data) {
+            vm.event = data.event;
+            console.log(data.positions);
+            data.positions.map(function (position) {
+                return position.amount;
+            }).forEach(function (amount) {
 
-
-               *//* $scope.$apply(function(){
-                    $scope.position = position;
-                    console.log($scope.position);
-                });*//*
+                if (vm.amounts.indexOf(amount) === -1) {
+                    vm.amounts.push(amount);
+                }
             });
-        }*/
-
-      /*  $scope.$on('mapInitialized', function(event, map) {
-            console.log("initialize")
-            //map.setCenter(position.coords.latitude,position.coords.longitude);
-        });*/
-
-        event.getEventById($routeParams.id).success(function(data){
-        vm.event = data.event;
-        vm.positions = data.positions;
-
-
-    });
-       /* positions.getPositionsByEventID($routeParams.id).success(function(data){
-
-        })*/
-}]);
+            vm.amounts = vm.amounts.sort();
+            console.log(vm.amounts);
+            vm.positions = data.positions;
+            console.log(vm.positions)
+        });
+    }]);
