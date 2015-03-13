@@ -8,7 +8,8 @@ angular.module('myApp', [
     'myApp.types',
     'myApp.version',
     'myApp.eventsByType',
-    'myApp.event'
+    'myApp.event',
+    'myApp.search'
 ]).
 config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
   $routeProvider

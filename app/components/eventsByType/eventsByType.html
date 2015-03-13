@@ -2,13 +2,15 @@
 
     <div ng-repeat="event in events.byType.events" class="col-md-4">
         <div class="panel panel-success">
-            <div class="panel-heading"><h4>{{event.name}}</h4></div>
-        <div class="panel-body">
-            <p>Last finding: {{event.updated_at}}</p>
-            <p >Taste {{event.taste}}</p>
-            <p class="text-success" data-ng-if="event.edible">Edible </p>
-            <p class="text-warning" ng-if="!event.edible">Poisonous </p>
-            <a ng-href="../event/{{event.id}}">Show findings near you</a>
+            <div class="panel-heading">
+                <h4>{{event.name}}</h4>
+            </div>
+            <div class="panel-body">
+                <p>Last finding: {{event.updated_at}}</p>
+                <p >Taste {{event.taste}}</p>
+                <p class="text-success" data-ng-if="event.edible">Edible </p>
+                <p class="text-danger" ng-if="!event.edible">Poisonous </p>
+                <a ng-href="../event/{{event.id}}">Show findings near you</a>
+            </div>
         </div>
     </div>
-    <div>

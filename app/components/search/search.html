@@ -1,0 +1,20 @@
+<div ng-if="search.result.length === 0">
+    <h2 class="text-danger">Your search did not match anything.</h2></div>
+
+    <div ng-repeat="item in search.result" class="col-md-4">
+        <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4>{{item.name}}</h4>
+        </div>
+        <div class="panel-body">
+            <p>Last finding: {{item.updated_at}}</p>
+            <p >Taste {{item.taste}}</p>
+            <p class="text-success" data-ng-if="item.edible">Edible </p>
+            <p class="text-warning" ng-if="!item.edible">Poisonous </p>
+            <a ng-href="../event/{{item.id}}">Show findings near you</a>
+            </div>
+        </div>
+    </div>
+
+
+

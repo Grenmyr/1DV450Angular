@@ -10,9 +10,6 @@ angular.module('myApp.eventsByType', ['ngRoute', 'service'])
                 controllerAs: 'events'
             })
     }])
-
-
-
 .controller('typeListCtrl', ['eventsByType','$routeParams',function(getByTypeService,$routeParams){
     var vm= this;
     //console.log($routeParams.id);
