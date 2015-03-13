@@ -50,6 +50,19 @@ angular.module('service', [])
             };
             return $http(request);
         }
+    }]).service('create', ['$http' ,function ($http) {
+        this.create = function (id) {
+            console.log("dasjkldkjskldsa")
+            var request = {
+                url: 'http://localhost:3000/api/v1/events/'+id,
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    Authorization: 'Token token=123'
+                }
+            };
+            return $http(request);
+        }
     }]).service('positions', ['$http' ,function ($http) {
         this.getEventById = function (id) {
             var request = {

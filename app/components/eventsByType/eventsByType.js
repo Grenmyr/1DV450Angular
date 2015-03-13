@@ -6,11 +6,11 @@ angular.module('myApp.eventsByType', ['ngRoute', 'service'])
         $routeProvider.when(
             '/type/:id', {
                 templateUrl: '/components/eventsByType/eventsByType.html',
-                controller: 'typeListCtrl',
-                controllerAs: 'events'
+                controller: 'typeCtrl',
+                controllerAs: 'typesCtrl'
             })
     }])
-.controller('typeListCtrl', ['eventsByType','$routeParams',function(getByTypeService,$routeParams){
+.controller('typeCtrl', ['eventsByType','$routeParams',function(getByTypeService,$routeParams){
     var vm= this;
     //console.log($routeParams.id);
 

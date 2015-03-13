@@ -21,9 +21,9 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">Home</a>
             </div>
-            <div class="navbar-header col-md-8">
+            <div class="navbar-header col-md-4">
                 <form class="navbar-form " role="search">
-                    <div class="input-group col-md-4">
+                    <div class="input-group col-md-12">
                         <input ng-model="search" type="text" class="form-control" placeholder="Search by plant species " name="q">
                         <div class="input-group-btn">
                             <a class="btn btn-default" href="/search/{{search}}"   type="submit"><i class="glyphicon glyphicon-search"></i></a>
@@ -33,6 +33,7 @@
             </div>
             <ul  class="menu nav navbar-nav navbar-right ">
                 <li ><a class="" href="/types">Find by categories</a></li>
+                <li ng-if="loginScope.loginService.authorized" ><a class="" href="/create" >Create new finding</a></li>
                 <li ng-if="loginScope.loginService.authorized" ng-click="loginScope.logout()"  ><a class="" href="/logout" >Logout</a></li>
                 <li ng-if="!loginScope.loginService.authorized"><a class=""  href="/login">Login</a></li>
             </ul>
@@ -63,6 +64,7 @@
     <script src="/components/types/types.js"></script>
     <script src="/components/search/search.js"></script>
     <script src="/components/eventsByType/eventsByType.js"></script>
+    <script src="/components/createevent/createEvent.js"></script>
     <script src="/components/event/event.js"></script>
     <script src ="/service/service.js"></script>
     <script src="/app.js"></script>

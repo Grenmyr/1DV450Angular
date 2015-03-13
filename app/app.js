@@ -9,7 +9,8 @@ angular.module('myApp', [
     'myApp.version',
     'myApp.eventsByType',
     'myApp.event',
-    'myApp.search'
+    'myApp.search',
+    'myApp.createEvent'
 ]).
 config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
   $routeProvider
