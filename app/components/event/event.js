@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.event', ['ngRoute', 'service'])
+angular.module('myApp.event', ['ngRoute','ngMap', 'service'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when(
@@ -13,6 +13,8 @@ angular.module('myApp.event', ['ngRoute', 'service'])
 .controller('eventCtrl', ['event','$routeParams',function(event,$routeParams){
     var vm= this;
     console.log($routeParams.id);
+
+
 
     event.getEventById($routeParams.id).success(function(data){
         vm.event = data.event;

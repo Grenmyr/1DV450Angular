@@ -1,15 +1,35 @@
-<div class="col-md-12">
-<div class="col-md-2">
+
     <div class="panel panel-success ">
         <div class="panel-heading  "><h4>{{eventCtrl.event.name}}</h4></div>
         <div class="panel-body">
-            <p>Taste: {{eventCtrl.event.taste}}</p>
-            <p class="text-success" data-ng-if="eventCtrl.event.edible">Edible  </p>
-            <p class="text-warning" data-ng-if="!eventCtrl.event.edible">Poisonous </p>
+            <div class="col-md-2">
+                <p>Taste: {{eventCtrl.event.taste}}</p>
+                <p class="text-success" data-ng-if="eventCtrl.event.edible">Edible  </p>
+                <p class="text-warning" data-ng-if="!eventCtrl.event.edible">Poisonous </p>
+            </div>
+            <div class="col-md-10">
+                <map zoom="20"
+                     center="[56.66,16.36]"
+                     disable-default-u-i="true"
+                     disable-double-click-zoom="true"
+                     draggable="true"
+                     draggable-cursor="help"
+                     dragging-cursor="move"
+                     keyboard-shortcuts="false"
+                     tilt="45"
+                     map-type-id="TERRAIN">
+                    <marker
+                            position="[56.66,16.36]"
+                            title="Hello Marker"
+                            animation="Animation.BOUNCE"
+                            draggable="true"
+                            visible="true">
+                    </marker>
+                </map>
+            </div>
         </div>
     </div>
 
-</div>
 
-fdasfdsafdasfdasfsadfdasfdasfasdfdsaf KARTA
-</div>
+
+
