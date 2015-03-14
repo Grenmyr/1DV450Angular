@@ -95,7 +95,7 @@ app/                    --> all of the source files for the application
     login.js         --> tests of the controller
   view2/                --> the view2 view template and logic
     view2.html            --> the partial template
-    type.js              --> the controller logic
+    types.js              --> the controller logic
     type_test.js         --> tests of the controller
   app.js                --> main application module
   index.html            --> app layout file (the main html template file of the app)

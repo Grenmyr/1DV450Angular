@@ -13,6 +13,30 @@ angular.module('service', [])
             };
             return $http(request);
         }
+    }]).service('eventsByType', ['$http' ,function ($http) {
+        this.getTypeById = function (id) {
+            var request = {
+                url: 'http://localhost:3000/api/v1/types/'+id+'/events',
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    Authorization: 'Token token=123'
+                }
+            };
+            return $http(request);
+        }
+    }]).service('event', ['$http' ,function ($http) {
+        this.getEventById = function (id) {
+            var request = {
+                url: 'http://localhost:3000/api/v1/events/'+id,
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    Authorization: 'Token token=123'
+                }
+            };
+            return $http(request);
+        }
     }]).service('login', ['$http' ,function ($http) {
         var vm = this;
         this.authorized = false;

@@ -1,0 +1,16 @@
+
+<nav id="secondNav" class="navbar navbar-inverse navbar-fixed-top">-->
+    <ul  class="menu nav navbar-nav navbar-right ">
+       <li ng-repeat="type in types.typesArray.data">
+           <a data-ng-href="type/{{type.id}}">{{type.name}}</a></li>
+    </ul>
+</nav>
+<p >This is the partial for view 2.</p>
+<p>
+
+  Showing of 'interpolate' filter:
+
+  {{ 'Current version is v%VERSION%.' | interpolate }}
+
+
+</p>

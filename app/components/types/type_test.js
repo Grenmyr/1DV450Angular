@@ -1,10 +1,10 @@
 'use strict';
 
-describe('myApp.type module', function() {
+describe('myApp.types module', function() {
 
   beforeEach(module('myApp.view2'));
 
-  describe('type controller', function(){
+  describe('types controller', function(){
 
     it('should ....', inject(function($controller) {
       //spec body

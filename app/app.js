@@ -4,8 +4,10 @@
 angular.module('myApp', [
     'ngRoute',
     'myApp.login',
-    'myApp.type',
-    'myApp.version'
+    'myApp.types',
+    'myApp.version',
+    'myApp.eventsByType',
+    'myApp.event'
 ]).
 config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
   $routeProvider

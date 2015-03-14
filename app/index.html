@@ -19,15 +19,15 @@
     <div ng-controller="loginctrl as loginScope" >
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-header"><a class="navbar-brand" href="/">Home</a></div>
-  <ul  class="menu nav navbar-nav navbar-right ">
-        <li ng-if="loginScope.loginService.authorized"><a class="" href="/type">Type</a></li>
-        <li ng-if="loginScope.loginService.authorized" ng-click="loginScope.logout()"  ><a class="" href="/logout" >Logout</a></li>
+            <ul  class="menu nav navbar-nav navbar-right ">
+                <li ><a class="" href="/types">Find by categories</a></li>
+                <li ng-if="loginScope.loginService.authorized" ng-click="loginScope.logout()"  ><a class="" href="/logout" >Logout</a></li>
 
-        <li ng-if="!loginScope.loginService.authorized"><a class=""  href="/login">Login</a></li>
+                <li ng-if="!loginScope.loginService.authorized"><a class=""  href="/login">Login</a></li>
 
-  </ul>
+            </ul>
         </nav>
-    </div class="header">
+    </div>
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
@@ -46,10 +46,12 @@
   <script src=bower_components/requirejs/require.js></script>
 
 
-  <script src="components/login/login.js"></script>
-  <script src="components/type/type.js"></script>
-  <script src ="service/service.js"></script>
-  <script src="app.js"></script>
+    <script src="components/login/login.js"></script>
+    <script src="components/types/types.js"></script>
+    <script src="components/eventsByType/eventsByType.js"></script>
+    <script src="components/event/event.js"></script>
+    <script src ="service/service.js"></script>
+    <script src="app.js"></script>
 
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>

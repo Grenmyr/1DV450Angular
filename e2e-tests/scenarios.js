@@ -29,11 +29,11 @@ describe('my app', function() {
   describe('view2', function() {
 
     beforeEach(function() {
-      browser.get('index.html#/type');
+      browser.get('index.html#/types');
     });
 
 
-    it('should render type when user navigates to /type', function() {
+    it('should render types when user navigates to /types', function() {
       expect(element.all(by.css('[ng-view] p')).first().getText()).
         toMatch(/partial for view 2/);
     });
