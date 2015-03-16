@@ -17,6 +17,12 @@ nav ul li a{
 #secondNav{
     margin-top:50px;
 }
+#selectMarker{
+    z-index: 5;
+}
+marker{
+    z-index: 2;
+}
 /*
 nav ul li a:hover{
     background-color: darkgreen!important;

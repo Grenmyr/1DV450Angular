@@ -12,8 +12,8 @@ angular.module('myApp.createEvent', ['ngRoute', 'ngMap', 'service'])
     }])
     .controller('createCtrl', ['create','types', '$routeParams', function (eventService,typesService, $routeParams) {
         var vm = this;
-        vm.allTypes = typesService.getAllTypes().success(function (data){
-            vm.typesArray = data;
+        vm.allTypes = typesService.getAllTypes().success(function (types){
+            vm.typesArray = types.data;
             console.log(vm.typesArray)
         });
     }]);

@@ -51,15 +51,53 @@ angular.module('service', [])
             return $http(request);
         }
     }]).service('create', ['$http' ,function ($http) {
-        this.create = function (id) {
-            console.log("dasjkldkjskldsa")
+        this.create = function (position) {
+            console.log(position);
+            console.log(sessionStorage.getItem('loginToken'));
             var request = {
-                url: 'http://localhost:3000/api/v1/events/'+id,
-                method: 'GET',
+                url: 'http://localhost:3000/api/v1/positions',
+                method: 'POST',
                 headers: {
                     Accept: 'application/json',
-                    Authorization: 'Token token=123'
-                }
+                    Authorization: 'Token token=123',
+                    JWT: sessionStorage.getItem('loginToken')
+                },
+                data:{
+                position:position}
+            };
+            return $http(request);
+        }
+    }]).service('update', ['$http' ,function ($http) {
+        this.update = function (position) {
+            console.log(position);
+            console.log(sessionStorage.getItem('loginToken'));
+            var request = {
+                url: 'http://localhost:3000/api/v1/positions/'+position.id,
+                method: 'PUT',
+                headers: {
+                    Accept: 'application/json',
+                    Authorization: 'Token token=123',
+                    JWT: sessionStorage.getItem('loginToken')
+                },
+                data:{
+                    position:position}
+            };
+            return $http(request);
+        }
+    }]).service('delete', ['$http' ,function ($http) {
+        this.delete = function (position) {
+            console.log(position);
+            console.log(sessionStorage.getItem('loginToken'));
+            var request = {
+                url: 'http://localhost:3000/api/v1/positions/'+position.id,
+                method: 'DELETE',
+                headers: {
+                    Accept: 'application/json',
+                    Authorization: 'Token token=123',
+                    JWT: sessionStorage.getItem('loginToken')
+                },
+                data:{
+                    position:position}
             };
             return $http(request);
         }
