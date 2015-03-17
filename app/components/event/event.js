@@ -18,11 +18,6 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
         vm.lat = null;
         console.log($routeParams.id);
 
-       /* navigator.geolocation.getCurrentPosition(function (location) {
-            vm.lat = location.coords.latitude;
-            vm.lng = location.coords.longitude;
-        });*/
-
         vm.marker = function (marker){
             vm.lat = marker.latLng.k;
             vm.lng = marker.latLng.D;

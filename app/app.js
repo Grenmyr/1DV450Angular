@@ -11,8 +11,15 @@ angular.module('myApp', [
     'myApp.event',
     'myApp.search',
     'myApp.createEvent'
-]).
-config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
+]).directive('navbar', function() {
+        var directive = {};
+
+        directive.restrict = 'E'; /* restrict this directive to elements */
+        directive.templateUrl = "/directive/menu.html";
+
+        return directive;
+    })
+    .config(['$routeProvider','$locationProvider', function($routeProvider,$locationProvider) {
   $routeProvider
       .otherwise({redirectTo: '/'});
         $locationProvider.html5Mode({enabled: true, requireBase: false});
