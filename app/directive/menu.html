@@ -15,7 +15,6 @@
         </div>
         <ul  class="menu nav navbar-nav navbar-right ">
             <li ><a class="" href="/types">Find by categories</a></li>
-            <li ng-if="loginScope.loginService.authorized" ><a class="" href="/create" >Create new finding</a></li>
             <li ng-if="loginScope.loginService.authorized" ng-click="loginScope.logout()"  ><a class="" href="/logout" >Logout</a></li>
             <li ng-if="!loginScope.loginService.authorized"><a class=""  href="/login">Login</a></li>
         </ul>

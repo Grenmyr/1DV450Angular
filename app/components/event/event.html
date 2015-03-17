@@ -14,8 +14,8 @@
                 </select>
 
                 <div class="panel-heading  ">
-                    <h4>Click Blue marker to confirm
-                    new finding location, or move and click marker to change location.
+                    <h4>Click <img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"> to confirm
+                    new finding location, or move and click  marker again to change location.
                     </h4>
                 </div>
                 <div ng-if="!loginScope.loginService.authorized" class="panel-heading  ">
@@ -24,18 +24,19 @@
                     </h4>
                 </div>
                 <div ng-if="loginScope.loginService.authorized" class="panel-heading  ">
-                    <h4>To edit and delete, click on marker, and input parameters will show</h4>
+                    <h4>To edit and delete, click on <img src="http://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png"> located in map and input parameters will show</h4>
                 </div>
             </div>
 
             <div class="col-md-10">
-                <map zoom="20" click=""
+                <map zoom="7" click=""
                      center="current-location"
                      disable-default-u-i="true"
                      disable-double-click-zoom="true"
                      draggable="true"
                      keyboard-shortcuts="false"
                      tilt="45"
+                     scale-control="true"
                      map-type-id="TERRAIN">
                     <marker ng-model="selected" id="selectMarker"
                             position="current-location"
@@ -59,29 +60,40 @@
 
     </div>
 
-    {{eventCtrl.error}}
-    {{eventCtrl.message}}
+
+
+    <div ng-if="eventCtrl.error" class="alert alert-warning">
+        <strong>{{eventCtrl.error}}</strong>
+    </div>
+
+    <div ng-if="eventCtrl.message" class="alert alert-success">
+        <strong> {{eventCtrl.message}}</strong>
+    </div>
+
+
+
     <div class="row">
 
 
-        <form class="navbar-form col-md-5">
-            <div class="panel-heading  "><h4>Create Finding</h4></div>
-            <div class="input-group col-md-6">
-                <select ng-model="amountSelect" class="btn btn-info">
+        <form class="navbar-form col-md-5 ">
+            <div class="panel-heading col-lg-offset-2  "><h4>Create Finding</h4></div>
+            <div class="input-group col-md-6 col-lg-offset-2">
+                <select ng-model="amountSelect" class="btn btn-info input-sm">
                     <option value="" selected="selected">Select richness</option>
                     <option value="{{amount}}" ng-repeat="amount in eventCtrl.amounts">Richness {{amount}}</option>
                 </select>
+                <button class="btn btn-info pull-right" ng-click="eventCtrl.submitMarker(amountSelect)">Submit Finding</button>
                 <input value="{{eventCtrl.lat}}" type="text" class="form-control"
                        placeholder="Move blue marker and Click to set latitude/longitude or leave blank to save where your location is."
                        name="q">
                 <input value="{{eventCtrl.lng}}" type="text" class="form-control"
                        placeholder="Move blue marker and Click to set latitude/longitude or leave blank to save where your location is.  "
                        name="q">
-                <button class="btn btn-success" ng-click="eventCtrl.submitMarker(amountSelect)">Submit Finding</button>
+
             </div>
         </form>
         <div ng-if="loginScope.loginService.authorized">
-            <form class="myform col-md-5" ng-if="eventCtrl.showBool">
+            <form class="myform col-md-5   " ng-if="eventCtrl.showBool">
                 <div class="panel-heading  "><h4>Edit/Delete Finding</h4></div>
                 <select data-ng-model="test" class="btn btn-success btn-sm">
                     <option value="{{amount}}" ng-selected="eventCtrl.selectedPosition.amount == amount"
@@ -97,7 +109,7 @@
                            placeholder="Move blue marker and Click to set latitude/longitude or leave blank to save where your location is.  "
                            name="q">
                     <button class="btn btn-success" ng-click="eventCtrl.updateMarker(test)">Edit Finding</button>
-                    <button class="btn btn-danger" ng-click="eventCtrl.deleteMarker()">Delete Finding</button>
+                    <button class="btn btn-danger pull-right" ng-click="eventCtrl.deleteMarker()">Delete Finding</button>
                 </div>
             </form>
         </div>

@@ -40,10 +40,13 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
                         if (position.id ==  response.position.id) {
                             vm.positions.splice(i,1);
                             vm.positions.push(response.position);
+                            vm.message = "Your fidnings richness was changed to "+response.position.amount
+                            vm.error= null;
                         }
                     })
                 }).error(function(error){
                     vm.error = error.error;
+                    vm.message= null;
                 })
             }
             else{
@@ -55,16 +58,17 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
             console.log(vm.selectedPosition);
             if(vm.selectedPosition !== undefined){
                 deletePosition.delete(vm.selectedPosition).success(function(response){
-                    console.log(response)
                     vm.positions.forEach(function(position,i){
                         if (position.id ==  vm.selectedPosition.id) {
                             vm.positions.splice(i,1);
                             console.log("spliced")
                             vm.message = "The Finding was removed";
+                            vm.error= null;
                         }
                     })
                 }).error(function(error){
                     vm.error = error.error;
+                    vm.message = null;
                 })
             }
             else{
@@ -106,7 +110,7 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
                 vm.event.type_ids.push(type.id)
             });
 
-            data.positions.map(function (position) {
+            /*data.positions.map(function (position) {
                 return position.amount;
             }).forEach(function (amount) {
 
@@ -114,7 +118,11 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
                     vm.amounts.push(amount);
                 }
             });
-            vm.amounts = vm.amounts.sort();
+            vm.amounts = vm.amounts.sort();*/
+            for (var i = 1; i < 6; i++) {
+                vm.amounts.push(i);
+            }
+
             vm.positions = data.positions;
         });
     }]);
