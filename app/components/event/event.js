@@ -51,6 +51,7 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
             }
             else{
                 vm.error = "You must select a marker to update."
+                vm.message = null;
             }
         };
 

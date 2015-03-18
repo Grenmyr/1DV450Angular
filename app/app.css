@@ -24,11 +24,9 @@ marker{
     z-index: 2;
 }
 
-
-
-@media (max-width: 990px) {
+@media (max-width: 768px) {
     body {
-        padding-top: 250px;
+        padding-top: 240px;
     }
 
 }
