@@ -44,6 +44,7 @@ angular.module('service', [])
             return $http(request);
         }
     }]).service('event', ['$http','API' ,function ($http,api) {
+        console.log("här")
         this.getEventById = function (id) {
             var request = {
                 url: api.url+'events/'+id,
@@ -106,7 +107,7 @@ angular.module('service', [])
             };
             return $http(request);
         }
-    }]).service('positions', ['$http','API' ,function ($http,api) {
+    }])/*.service('positions', ['$http','API' ,function ($http,api) {
         this.getEventById = function (id) {
             var request = {
                 url: api.url+'events/'+id,
@@ -118,7 +119,7 @@ angular.module('service', [])
             };
             return $http(request);
         }
-    }]).service('login', ['$http','API' ,function ($http,api) {
+    }])*/.service('login', ['$http','API' ,function ($http,api) {
         var vm = this;
         this.authorized = false;
 

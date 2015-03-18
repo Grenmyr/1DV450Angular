@@ -16,7 +16,6 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
         vm.amounts = [];
         vm.showBool = false;
         vm.lat = null;
-        console.log($routeParams.id);
 
         vm.marker = function (marker){
             vm.lat = marker.latLng.k;
@@ -50,7 +49,7 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
                 })
             }
             else{
-                vm.error = "You must select a marker to update."
+                vm.error = "You must select a marker to update.";
                 vm.message = null;
             }
         };
@@ -83,15 +82,17 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
                 vm.error = "Click blue marker to confirm location, or move and click marker if current location is not correct.";
                 return;
             }
-            if(amount !== undefined ) {
+            if(parseInt(amount)) {
                     var position = {
                             lat: vm.lat,
                             lng: vm.lng,
                             amount: amount,
-                            event_id: vm.event.id
+                            event_id: vm.event.id,
+                            creator_id : 1
                     };
                     postPosition.create(position).success(function(data){
                         vm.positions.push(data.position);
+                        vm.creator.submits +=1;
                         vm.message = 'New Finding was created!';
                         vm.error = null;
                     }).error(function(error){
@@ -100,13 +101,16 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
                     })
             }
             else{
+                vm.message = null;
                 vm.error = "You must estimate from 1-5 how rich your finding was, where 5 is max"
             }
         };
 
         getEvent.getEventById($routeParams.id).success(function (data) {
+            console.log(data);
             vm.event = data.event;
             vm.event.type_ids = [];
+            vm.creator = data.createdBy;
             data.types.forEach(function(type){
                 vm.event.type_ids.push(type.id)
             });
@@ -126,4 +130,6 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
 
             vm.positions = data.positions;
         });
+
+
     }]);

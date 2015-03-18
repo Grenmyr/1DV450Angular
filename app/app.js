@@ -9,7 +9,8 @@ angular.module('myApp', [
     'myApp.version',
     'myApp.eventsByType',
     'myApp.event',
-    'myApp.search'
+    'myApp.search',
+    'myApp.logout'
 ]).directive('navbar', function() {
         var directive = {};
 

@@ -3,16 +3,22 @@
 
 body {
     padding-top: 70px;
+    background-image: url("/images/forrest.jpg");
 }
 nav ul li{
     margin-right: 7px;
-
+}
+button{
+    margin-bottom-: 20px!important;
 }
 
 nav ul li a{
     font-weight: 200;
     font-size: 1.4em;
 
+}
+#form1,#form2{
+padding-top: 30px;
 }
 #secondNav{
     margin-top:50px;

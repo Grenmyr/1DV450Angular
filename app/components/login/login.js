@@ -19,6 +19,7 @@ angular.module('myApp.login', ['ngRoute', 'service'])
         vm.logout = function () {
             sessionStorage.removeItem('loginToken');
             loginService.authorized = false;
+            $location.path('/logout');
         };
 
         vm.login = function() {

@@ -1,6 +1,13 @@
 <div data-ng-controller="loginctrl as loginScope">
     <div class="panel panel-success ">
-        <div class="panel-heading  "><h4>{{eventCtrl.event.name}}</h4></div>
+
+        <div class="panel-heading  ">
+            <h4>{{eventCtrl.event.name}}</h4>
+            <div class="row">
+            <bold class="col-lg-2">Inserted By: {{eventCtrl.creator.name}}</bold>
+            <bold class="col-lg-2">Submits: {{eventCtrl.creator.submits}}</bold>
+            </div>
+            </div>
         <div class="panel-body">
             <div class="col-md-2">
                 <p>Taste: {{eventCtrl.event.taste}}</p>
@@ -8,7 +15,7 @@
                 <p class="text-success" data-ng-if="eventCtrl.event.edible">Edible </p>
 
                 <p class="text-warning" data-ng-if="!eventCtrl.event.edible">Poisonous </p>
-                <select ng-model="amountSelect">
+                <select class="btn btn-primary" ng-model="amountSelect">
                     <option value="" selected="selected">Filter by richness</option>
                     <option value="{{amount}}" ng-repeat="amount in eventCtrl.amounts">Richness {{amount}}</option>
                 </select>
@@ -24,7 +31,7 @@
                     </h4>
                 </div>
                 <div ng-if="loginScope.loginService.authorized" class="panel-heading  ">
-                    <h4>To edit and delete, click on <img src="http://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png"> located in map and input parameters will show</h4>
+                    <h4>To edit and delete, click on <img onclick="" src="http://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png"> located in map and input parameters will show</h4>
                 </div>
             </div>
 
@@ -49,33 +56,62 @@
                     </marker>
                     <marker ng-repeat="position in eventCtrl.positions | filter: { amount: amountSelect }"
                             position="[{{position.lat}},{{position.lng}}]"
-                            title="{{eventCtrl.event.name}} Richness {{position.amount}}"
+                            title="Richness: {{position.amount}} added by: {{position.creator.name}}"
                             draggable="false"
                             on-click="eventCtrl.selectMarker(selected)"
                             visible="true">
                     </marker>
+                    <info-window id="bar"  visible="true">
+                        <div ng-non-bindable>
+                            <div id="siteNotice"></div>
+                        </div>
+                    </info-window>
+                    <div ng-if="eventCtrl.error" class="alert alert-warning">
+                        <strong>{{eventCtrl.error}}</strong>
+                    </div>
+                    <div ng-if="eventCtrl.message" class="alert alert-success">
+                        <strong> {{eventCtrl.message}}</strong>
+                    </div>
                 </map>
+            </div>
+            <form class="navbar-form col-md-2 " id="form1">
+                <div class="panel-heading "><h4>Create Finding</h4></div>
+                <div class="input-group col-md-6 col-lg-offset-2">
+                    <select ng-model="amountSelect" class="btn btn-info input-sm">
+                        <option value="" selected="selected">Select richness</option>
+                        <option value="{{amount}}" ng-repeat="amount in eventCtrl.amounts">Richness {{amount}}</option>
+                    </select>
+                    <button class="btn btn-info pull-right" ng-click="eventCtrl.submitMarker(amountSelect)">Submit Finding</button>
+                    <input value="{{eventCtrl.lat}}" type="text" class="form-control"
+                           placeholder="Move blue marker and Click to set latitude "
+                           name="q">
+                    <input value="{{eventCtrl.lng}}" type="text" class="form-control"
+                           placeholder="Move blue marker and Click to set longitude. "
+                           name="q">
+                </div>
+            </form>
+
+            <div ng-if="loginScope.loginService.authorized">
+                <form class="myform col-md-3 " id="form2" ng-if="eventCtrl.showBool">
+                    <div class="panel-heading pull-left "><h4>Edit/Delete Finding</h4></div>
+                    <div class="input-group  ">
+                    <select data-ng-model="test" class="btn btn-success btn-sm">
+                        <option value="{{amount}}" ng-selected="eventCtrl.selectedPosition.amount == amount"
+                                ng-repeat="amount in eventCtrl.amounts">Richness {{amount}}
+                        </option>
+                    </select>
+                    </div>
+                        <button class="btn btn-success " ng-click="eventCtrl.updateMarker(test)">Edit Finding</button>
+
+                        <button class="btn btn-danger col-lg-offset-2 " ng-click="eventCtrl.deleteMarker()">Delete Finding</button>
+                </form>
             </div>
         </div>
 
     </div>
 
-
-
-    <div ng-if="eventCtrl.error" class="alert alert-warning">
-        <strong>{{eventCtrl.error}}</strong>
-    </div>
-
-    <div ng-if="eventCtrl.message" class="alert alert-success">
-        <strong> {{eventCtrl.message}}</strong>
-    </div>
-
-
-
     <div class="row">
-
-
-        <form class="navbar-form col-md-5 ">
+       <!-- <form class="navbar-form col-md-5 ">
             <div class="panel-heading col-lg-offset-2  "><h4>Create Finding</h4></div>
             <div class="input-group col-md-6 col-lg-offset-2">
                 <select ng-model="amountSelect" class="btn btn-info input-sm">
@@ -89,11 +125,10 @@
                 <input value="{{eventCtrl.lng}}" type="text" class="form-control"
                        placeholder="Move blue marker and Click to set latitude/longitude or leave blank to save where your location is.  "
                        name="q">
-
             </div>
-        </form>
-        <div ng-if="loginScope.loginService.authorized">
-            <form class="myform col-md-5   " ng-if="eventCtrl.showBool">
+        </form>-->
+        <!--<div ng-if="loginScope.loginService.authorized">
+            <form class="myform col-md-5 " id="form1" ng-if="eventCtrl.showBool">
                 <div class="panel-heading  "><h4>Edit/Delete Finding</h4></div>
                 <select data-ng-model="test" class="btn btn-success btn-sm">
                     <option value="{{amount}}" ng-selected="eventCtrl.selectedPosition.amount == amount"
@@ -112,7 +147,7 @@
                     <button class="btn btn-danger pull-right" ng-click="eventCtrl.deleteMarker()">Delete Finding</button>
                 </div>
             </form>
-        </div>
+        </div>-->
     </div>
 </div>
 
