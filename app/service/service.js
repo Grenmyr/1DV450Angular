@@ -117,7 +117,7 @@ angular.module('service', [])
         }
     }])*/.service('register', ['$http','API' ,function ($http,api) {
         this.register = function (registerData) {
-            console.log(registerData)
+            console.log(registerData);
             var request = {
                 url: 'http://188.166.3.35:3000/api/register',
                 method: 'GET',
