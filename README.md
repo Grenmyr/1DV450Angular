@@ -1,6 +1,6 @@
 ## Min Angular app
 
-#### En app för hitta intressanta svamp/Bärplatser i sverige.
+#### En app för hitta intressanta Svamp/Bärplatser i världen.
 
 Installationsguide
 
