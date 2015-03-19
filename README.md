@@ -20,7 +20,8 @@ Installationsguide
 Ändringar i API
 * Lagt till bättre data i feed fil.    
 * Vid login och register i creator (clientverifiering ej nyckel) retunerar jag från api nu även username och hur många submits han eller hon gjort samt userID. Min Angular ville ha den datan.  
-* Mitt apis positioner klass har fått fler relationer och relation till creator tabell har skapats så min angular app kan lista vem som skapar positioner, samt hur många positioner den användaren lagt in (man hade kunna jobbat mer med det, och kanske listat de flitigaste användarna för skapa tävlig och promota att submitta svampställen.)
+* Mitt apis positioner klass har fått fler relationer och relation till creator tabell har skapats så min angular app kan lista vem som skapar positioner, samt hur många positioner den användaren lagt in (man hade kunna jobbat mer med det, och kanske listat de flitigaste användarna för skapa tävlig och promota att submitta svampställen.)  
+* Ändrade så creator_id finns som FK för både events (blev en typtabell) och för Positions (mina markers).  
 *  Position klass har även fått amount property, utflyttad ifrån min event tabell.  
 *  Event tabllen är nu olika typer av bär eller svampar (ex kantarell eller rönnbär) som då e 2 olika typer. Jag har seedat arttyper, och orkade bara skapa namn för bär och svampar.  Men skapade fler kategorier för visa på vision.  
 *  Event tabell har även fått ny parameter som heter taste, som ska reflektera hur god en art är.  
