@@ -17,7 +17,7 @@ Installationsguide
 8: öppna webbläsare och adress http://localhost:8080/  
 9: klart Api är publiserat, och anrop körs mot det så kan bara installera angular.  
 
-Körinstruktioner: Regga en användare, du loggas då in automatiskt och tas till vyn för kategorier. Navigera vidare, för skapa ny finding, antingen klicka på blue marker, eller dra den, o klicka sen för bekräfta position. För editera och radera markers så tryck på en befintlig (röda) för få upp editerinsalternativ/delete. Går även söka på artnamn.
+Körinstruktioner: Regga en användare, du loggas då in automatiskt och tas till vyn för kategorier. Navigera vidare, för skapa ny finding, antingen klicka på blue marker, eller dra den, o klicka sen för bekräfta position. För editera och radera markers så tryck på en befintlig (röda) för få upp editerinsalternativ/delete.Det går även söka på artnamn eller delar av artnamn i topmeny mot dem som jag lagt in. (ca 5 svamptyper och 5 bärtyper)
 
 Ändringar i API
 * Lagt till bättre data i feed fil.    
