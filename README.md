@@ -17,6 +17,8 @@ Installationsguide
 8: öppna webbläsare och adress http://localhost:8080/  
 9: klart Api är publiserat, och anrop körs mot det så kan bara installera angular.  
 
+Körinstruktioner: Regga en användare, du loggas då in automatiskt och tas till vyn för kategorier. Navigera vidare, för skapa ny finding, antingen klicka på blue marker, eller dra den, o klicka sen för bekräfta position. För editera och radera markers så tryck på en befintlig (röda) för få upp editerinsalternativ/delete. Går även söka på artnamn.
+
 Ändringar i API
 * Lagt till bättre data i feed fil.    
 * Vid login och register i creator (clientverifiering ej nyckel) retunerar jag från api nu även username och hur många submits han eller hon gjort samt userID. Min Angular ville ha den datan.  
