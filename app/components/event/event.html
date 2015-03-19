@@ -74,6 +74,7 @@
                     </div>
                 </map>
             </div>
+            <div ng-if="loginScope.loginService.authorized">
             <form class="navbar-form col-md-2 " id="form1">
                 <div class="panel-heading "><h4>Create Finding</h4></div>
                 <div class="input-group col-md-6 col-lg-offset-2">
@@ -91,7 +92,7 @@
                 </div>
             </form>
 
-            <div ng-if="loginScope.loginService.authorized">
+
                 <form class="myform col-md-3 " id="form2" ng-if="eventCtrl.showBool">
                     <div class="panel-heading pull-left "><h4>Edit/Delete Finding</h4></div>
                     <div class="input-group  ">

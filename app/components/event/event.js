@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
+angular.module('myApp.event', ['ngRoute', 'ngMap', 'service','myApp.login'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when(
@@ -10,7 +10,7 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
                 controllerAs: 'eventCtrl'
             })
     }])
-    .controller('eventCtrl', ['event','create','update','delete', '$routeParams', function (getEvent,postPosition,putPosition,deletePosition, $routeParams) {
+    .controller('eventCtrl', ['event','create','update','delete', '$routeParams','login', function (getEvent,postPosition,putPosition,deletePosition, $routeParams,loginService) {
         var vm = this;
         vm.positions = [];
         vm.amounts = [];
@@ -83,18 +83,20 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
                 return;
             }
             if(parseInt(amount)) {
+              var token =  JSON.parse(sessionStorage.getItem('loginToken'));
                     var position = {
                             lat: vm.lat,
                             lng: vm.lng,
                             amount: amount,
                             event_id: vm.event.id,
-                            creator_id : 1
+                            creator_id :  token.creator_id
                     };
                     postPosition.create(position).success(function(data){
                         vm.positions.push(data.position);
                         vm.creator.submits +=1;
                         vm.message = 'New Finding was created!';
                         vm.error = null;
+                        loginService.jwt.submits +=1
                     }).error(function(error){
                         vm.error = error.error;
                         vm.message = null;
@@ -115,15 +117,6 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service'])
                 vm.event.type_ids.push(type.id)
             });
 
-            /*data.positions.map(function (position) {
-                return position.amount;
-            }).forEach(function (amount) {
-
-                if (vm.amounts.indexOf(amount) === -1) {
-                    vm.amounts.push(amount);
-                }
-            });
-            vm.amounts = vm.amounts.sort();*/
             for (var i = 1; i < 6; i++) {
                 vm.amounts.push(i);
             }

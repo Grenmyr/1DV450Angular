@@ -1,0 +1,19 @@
+MIN REGISTERVY
+<div class="col-md-4 col-md-offset-4" data-ng-controller="registerCtrl as reg">
+    <div class="panel panel-primary">
+        <div class="close" data-ng-click="reg.toRoot()" >&times;</div>
+        <div class="panel-heading">
+            <h3 class="panel-title">Register</h3>
+        </div>
+        <div class="panel-body input-group  ">
+            <form name="reg.form" class="simple-form">
+                name: <br />
+                <input type="text" ng-model="reg.name"/><br />
+                Password: <br />
+                <input  type="password" ng-model="reg.password"/>
+                <button class="btn btn-success" data-ng-click="reg.register()">Log in</button>
+            </form>
+            <div class="alert-warning"><strong>{{reg.error}}</strong></div>
+        </div>
+    </div>
+</div>

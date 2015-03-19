@@ -44,7 +44,6 @@ angular.module('service', [])
             return $http(request);
         }
     }]).service('event', ['$http','API' ,function ($http,api) {
-        console.log("här")
         this.getEventById = function (id) {
             var request = {
                 url: api.url+'events/'+id,
@@ -58,15 +57,14 @@ angular.module('service', [])
         }
     }]).service('create', ['$http','API' ,function ($http,api) {
         this.create = function (position) {
-            console.log(position);
-            console.log(sessionStorage.getItem('loginToken'));
+            var token = JSON.parse(sessionStorage.getItem('loginToken'));
             var request = {
                 url: api.url+'positions',
                 method: 'POST',
                 headers: {
                     Accept: api.format,
                     Authorization:  api.key,
-                    JWT: sessionStorage.getItem('loginToken')
+                    JWT: token.jwt
                 },
                 data:{
                 position:position}
@@ -75,15 +73,14 @@ angular.module('service', [])
         }
     }]).service('update', ['$http','API' ,function ($http,api) {
         this.update = function (position) {
-            console.log(position);
-            console.log(sessionStorage.getItem('loginToken'));
+            var token = JSON.parse(sessionStorage.getItem('loginToken'));
             var request = {
                 url: api.url+'positions/'+position.id,
                 method: 'PUT',
                 headers: {
                     Accept: api.format,
                     Authorization:  api.key,
-                    JWT: sessionStorage.getItem('loginToken')
+                    JWT: token.jwt
                 },
                 data:{
                     position:position}
@@ -92,15 +89,14 @@ angular.module('service', [])
         }
     }]).service('delete', ['$http','API' ,function ($http,api) {
         this.delete = function (position) {
-            console.log(position);
-            console.log(sessionStorage.getItem('loginToken'));
+            var token = JSON.parse(sessionStorage.getItem('loginToken'));
             var request = {
                 url: api.url+'positions/'+position.id,
                 method: 'DELETE',
                 headers: {
                     Accept: api.format,
                     Authorization:  api.key,
-                    JWT: sessionStorage.getItem('loginToken')
+                    JWT: token.jwt
                 },
                 data:{
                     position:position}
@@ -119,9 +115,28 @@ angular.module('service', [])
             };
             return $http(request);
         }
-    }])*/.service('login', ['$http','API' ,function ($http,api) {
+    }])*/.service('register', ['$http','API' ,function ($http,api) {
+        this.register = function (registerData) {
+            console.log(registerData)
+            var request = {
+                url: 'http://localhost:3000/api/register',
+                method: 'GET',
+                headers: {
+                    Accept: api.format,
+                    Authorization:  api.key,
+                    name: registerData.name,
+                    password : registerData.password
+                }
+            };
+
+            return $http(request).success(function(JWT){
+                sessionStorage.setItem('loginToken', JSON.stringify(JWT));
+            });
+        }
+    }]).service('login', ['$http','API' ,function ($http,api) {
         var vm = this;
         this.authorized = false;
+        this.jwt = false;
 
         this.getLogin = function (loginData) {
             var request = {
@@ -135,8 +150,10 @@ angular.module('service', [])
                 }
             };
             return $http(request)
-                .success(function(){
+                .success(function(JWT){
                     vm.authorized = true;
+                    sessionStorage.setItem('loginToken', JSON.stringify(JWT));
+                    vm.jwt = JWT;
                 });
         }
     }]);
