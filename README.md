@@ -15,12 +15,25 @@ Installationsguide
 8: öppna webbläsare och adress http://localhost:8080/  
 9: klart  
 
+Ändringar i API
+* Lagt till bättre data i feed fil.    
+* Vid login och register i creator (clientverifiering ej nyckel) retunerar jag från api nu även username och hur många submits han eller hon gjort samt userID. Min Angular ville ha den datan.  
+* Mitt apis positioner klass har fått fler relationer och relation till creator tabell har skapats så min angular app kan lista vem som skapar positioner, samt hur många positioner den användaren lagt in (man hade kunna jobbat mer med det, och kanske listat de flitigaste användarna för skapa tävlig och promota att submitta svampställen.)
+*  Position klass har även fått amount property, utflyttad ifrån min event tabell.  
+*  Event tabllen är nu olika typer av bär eller svampar (ex kantarell eller rönnbär) som då e 2 olika typer. Jag har seedat arttyper, och orkade bara skapa namn för bär och svampar.  Men skapade fler kategorier för visa på vision.  
+*  Event tabell har även fått ny parameter som heter taste, som ska reflektera hur god en art är.  
+*  I modell till position har jag i serializable_hash lagt till "include: :creator," för kunna lista den nya   relationen en position har för vem som skapat den. (slipper onödiga anrop från angular app)
+*  Skapat full crud för position kontroller. var tidgare bara show och index.  
+*  Lagt in sökfunktion för event, så jag kan söka på bär eller svampar sparade i databasen.   
 
+Krav Rails api/registrering
+*  Jag har glömt kraven för mer än G i rails delen, men jag tror jag har vad som krävs o lite mer, mitt api kan tex hantera xml och json. 
+*  Publiserat det på digitalocean http://188.166.3.35:3000/  
 
-Då bör det funka, Apiet ligger publiserat. Ska funka. OM INTE FUNGERAR , får du clona ner dem två (föj deras installationsmanualer) och sätta upp lokal server.
+Krav Angular app
+Jag har bara gjort för G förutom.
+*  Jag kan använda deep links.  
+*  Jag är nöjd med min karttjänst, det var lite bök med få det att funka med flytta blå marker, bekräfta med klick för spara ni event, samt editera om man trycker på röd marker.   
+*
 
-Då får du även gå in i service katalog på angular repot. Och ändra url konstantens värde till localhost:3000/api/v1/
-Får även ändra 
-rad 122 i samma fil till 'localhost:3000/api/register'
-rad 143 'localhost:3000/api/login'
 
