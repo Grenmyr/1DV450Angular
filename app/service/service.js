@@ -3,7 +3,7 @@
 angular.module('service', [])
     .constant('API', {
     'key': 'Token token=123', //OBS Hårdkodad API key som seedas i rails register, bara för utveckling.
-    'url': "http://localhost:3000/api/v1/", // base url
+    'url': "http://188.166.3.35:3000/api/v1/", // base url
     'format': 'application/json' // Default representation we want
 })
     .service('types', ['$http','API' ,function ($http,api) {
@@ -119,7 +119,7 @@ angular.module('service', [])
         this.register = function (registerData) {
             console.log(registerData)
             var request = {
-                url: 'http://localhost:3000/api/register',
+                url: 'http://188.166.3.35:3000/api/register',
                 method: 'GET',
                 headers: {
                     Accept: api.format,
@@ -140,7 +140,7 @@ angular.module('service', [])
 
         this.getLogin = function (loginData) {
             var request = {
-                url: 'http://localhost:3000/api/login',
+                url: 'http://188.166.3.35:3000/api/login',
                 method: 'GET',
                 headers: {
                     Accept: api.format,
