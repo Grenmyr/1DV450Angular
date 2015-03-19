@@ -31,7 +31,7 @@ Installationsguide
 Krav Rails api/registrering
 *  Jag har glömt kraven för mer än G i rails delen, men jag tror jag har vad som krävs o lite mer, mitt api kan tex hantera xml och json. 
 *  Stöd för registrering av klientanvändare.  
-*  Publiserat det på digitalocean http://188.166.3.35:3000/  bara gå dit o klicka runt o testa tror allt funkar sen publisering ta i trä.  
+*  Publiserat det på digitalocean http://188.166.3.35:3000/  bara gå dit o klicka runt för se registrering av hur man får api nyckel. (för utvecklare). Förutom registrering för användare där, så ligger mitt api o snurrar i bakgrunden som då min angular applikation jobbar mot. Jag har testat regga ny användare och använda den key i min angular app och det funkar bra.
 
 Krav Angular app
 Jag har bara gjort för G förutom.
