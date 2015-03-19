@@ -15,7 +15,7 @@ Installationsguide
 6: skriv "bower install"     
 7: Skriv "node server.js" i konsol  
 8: öppna webbläsare och adress http://localhost:8080/  
-9: klart  
+9: klart Api är publiserat, och anrop körs mot det så kan bara installera angular.  
 
 Ändringar i API
 * Lagt till bättre data i feed fil.    
