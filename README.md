@@ -6,14 +6,14 @@ Installationsguide
 
 1: Clona eller ladda ner repo.
 
-2:Gå in i katalog 1dv450 angular.
-3: Om du ej har NPM installera det på din dator.
-4: Kör npm install 
-5: Om du inte har bower installerat, kör npm install bower --save
-6: kör bower install 
-7: Skriv node server.js i consol
-8: öppna webbläsare och adress http://localhost:8080/
-9: klart
+2:Gå in i katalog 1dv450 angular.  
+3: Om du ej har NPM installera det på din dator.  
+4: Kör npm install   
+5: Om du inte har bower installerat, kör npm install bower --save  
+6: kör bower install   
+7: Skriv node server.js i consol  
+8: öppna webbläsare och adress http://localhost:8080/  
+9: klart  
 
 
 
