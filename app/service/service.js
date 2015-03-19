@@ -2,7 +2,7 @@
 
 angular.module('service', [])
     .constant('API', {
-    'key': 'Token token=123', //OBS Hårdkodad API key som seedas i rails register, bara för utveckling.
+    'key': 'Token token=c1d48be04c3f5a5ec74ef26c737223bd',
     'url': "http://188.166.3.35:3000/api/v1/", // base url
     'format': 'application/json' // Default representation we want
 })
@@ -103,25 +103,14 @@ angular.module('service', [])
             };
             return $http(request);
         }
-    }])/*.service('positions', ['$http','API' ,function ($http,api) {
-        this.getEventById = function (id) {
-            var request = {
-                url: api.url+'events/'+id,
-                method: 'GET',
-                headers: {
-                    Accept: api.format,
-                    Authorization:  api.key
-                }
-            };
-            return $http(request);
-        }
-    }])*/.service('register', ['$http','API' ,function ($http,api) {
+    }]).service('register', ['$http','API' ,function ($http,api) {
         this.register = function (registerData) {
             console.log(registerData);
             var request = {
                 url: 'http://188.166.3.35:3000/api/register',
                 method: 'GET',
                 headers: {
+                    "Content-Type": 'application/json; charset=utf-8',
                     Accept: api.format,
                     Authorization:  api.key,
                     name: registerData.name,

@@ -61,7 +61,6 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service', 'myApp.login'])
                     vm.positions.forEach(function (position, i) {
                         if (position.id == vm.selectedPosition.id) {
                             vm.positions.splice(i, 1);
-                            console.log("spliced")
                             vm.message = "The Finding was removed";
                             vm.error = null;
                         }
@@ -93,10 +92,11 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service', 'myApp.login'])
                 };
                 postPosition.create(position).success(function (data) {
                     vm.positions.push(data.position);
-                    vm.creator.submits += 1;
                     vm.message = 'New Finding was created!';
                     vm.error = null;
-                    loginService.jwt.submits += 1
+
+                    loginService.jwt.submits += 1;
+                    sessionStorage.setItem('loginToken',JSON.stringify(loginService.jwt))
                 }).error(function (error) {
                     vm.error = error.error;
                     vm.message = null;
