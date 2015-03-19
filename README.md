@@ -28,13 +28,14 @@ Installationsguide
 
 Krav Rails api/registrering
 *  Jag har glömt kraven för mer än G i rails delen, men jag tror jag har vad som krävs o lite mer, mitt api kan tex hantera xml och json. 
-*  Stöd för registrering av klientanvändare  
-*  Publiserat det på digitalocean http://188.166.3.35:3000/  
+*  Stöd för registrering av klientanvändare.  
+*  Publiserat det på digitalocean http://188.166.3.35:3000/  bara gå dit o klicka runt o testa tror allt funkar sen publisering ta i trä.  
 
 Krav Angular app
 Jag har bara gjort för G förutom.
 *  Jag kan använda deep links.  
 *  Jag är nöjd med min karttjänst, det var lite bök med få det att funka med flytta blå marker, bekräfta med klick för spara ni event, samt editera om man trycker på röd marker.   
-*
+* Kravet "Möjlighet att autentisera (logga in) användare/resursägare så att dessa kan skapa/ändra och ta bort egna resurser." Tyckte jag var fel för min app, så jag kräver bara klientinloggning för posta/edit/delete. Dock så kan man ta bort eller editera andras resursägares markers. Men jag listar vem som skapat markers beroende på vem som är inloggad, så jag hade kunna implementerat kravet, men helt ärligt tyckte jag det var fel för min app.
+* Jag har implementerat enkel registrering av klientanvändare på angular appen
 
 
