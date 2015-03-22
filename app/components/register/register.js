@@ -30,6 +30,9 @@ angular.module('myApp.register', ['ngRoute', 'service','myApp.login'])
                 vm.error = 'Only english chars in username';
             }
         };
+        vm.toRoot = function () {
+            $location.path('/');
+        }
 
 
     }]);

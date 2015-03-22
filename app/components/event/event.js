@@ -109,7 +109,6 @@ angular.module('myApp.event', ['ngRoute', 'ngMap', 'service', 'myApp.login'])
         };
 
         getEvent.getEventById($routeParams.id).success(function (data) {
-            console.log(data);
             vm.event = data.event;
             vm.event.type_ids = [];
             vm.creator = data.createdBy;

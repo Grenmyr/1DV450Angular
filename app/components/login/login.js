@@ -37,5 +37,8 @@ angular.module('myApp.login', ['ngRoute', 'service'])
                 })
 
         };
+        vm.toRoot = function () {
+            $location.path('/');
+        }
     }]);
 

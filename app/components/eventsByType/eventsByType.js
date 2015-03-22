@@ -15,7 +15,6 @@ angular.module('myApp.eventsByType', ['ngRoute', 'service'])
 
    vm.showByType = getByTypeService.getTypeById($routeParams.id).success(function(data){
         vm.byType = data;
-        console.log(data);
     })
 }]);
 
