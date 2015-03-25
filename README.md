@@ -16,7 +16,7 @@ Installationsguide
 7: Skriv "node server.js" i konsol  
 8: öppna webbläsare och adress http://localhost:8080/  
 9: ~~klart Api är publiserat, och anrop körs mot det så kan bara installera angular.~~  
-9: Server e nedtagen, eventuella testningar får göras genom installera rails api lokalt, och skriva om anropen från angular klienten till localhost:3000 istället.
+9: Server e nedtagen, eventuella testningar får göras genom installera [rails] (https://github.com/Grenmyr/1DV450Registration) api lokalt, och skriva om anropen från angular klienten till localhost:3000 istället.
 
 Körinstruktioner: Regga en användare, du loggas då in automatiskt och tas till vyn för kategorier. Navigera vidare, för skapa ny finding, antingen klicka på blue marker, eller dra den, o klicka sen för bekräfta position. För editera och radera markers så tryck på en befintlig (röda) för få upp editerinsalternativ/delete.Det går även söka på artnamn eller delar av artnamn i topmeny mot dem som jag lagt in. (ca 5 svamptyper och 5 bärtyper)
 
